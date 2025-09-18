@@ -7,11 +7,12 @@ class Product:
 
 
 class Category:
-    def __init__(self, name, code, parent=''):
+    def __init__(self, name, code, parent='', product=[]):
         self.name = name
         self.code = code
         self.parent = parent
         self.display_name = self._get_display_name()
+        self.product = []
 
     def _get_display_name(self, child_name=''):
         if self.parent:
@@ -23,43 +24,40 @@ class Category:
         else:
             return self.name
 
-    def print_category(self, cate, products):
+    def print_category(self, cat, product):
         print("--------------------------------------------------------------------------")
-        for i in cate:
+        for i in cat:
             print(f"Category name: {i.name}, Category code: {i.code}")
-            for j in products:
-                if i.name == j.categeoy.name:
+            for j in product:
+                if i.name == j.categeoy:
                     print(j.name, j.code, j.price)
             print("--------------------------------------------------------------------------")
 
-
-c1 = Category("vehicle", 1)
-c2 = Category("car", 2, c1)
-c3 = Category("Kia", 3, c2)
-c4 = Category("Petrol", 4, c3)
-c5 = Category("Power", 5, c4)
+prod1 = Product("2wheel", "001", "vehicle", 100000)
+prod2 = Product("4wheel", "002", "vehicle", 1000000)
+prod3 = Product("Truck", "003", "vehicle", 5000000)
+prod4 = Product("Kia", "004", "car", 5000000)
+prod5 = Product("Hyundai", "005", "car", 5000000)
+prod6 = Product("Innova", "006", "car", 5000000)
+prod7 = Product("seltos", "007", "Kia", 5000000)
+prod8 = Product("sonet", "008", "Kia", 5000000)
+prod9 = Product("syros", "009", "Kia", 5000000)
+prod10 = Product("Class A", "010", "Petrol", 5000000)
+prod11 = Product("Class B", "011", "Petrol", 5000000)
+prod12 = Product("Class C", "012", "Petrol", 5000000)
+prod13 = Product("BPCL", "013", "Power", 5000000)
+prod14 = Product("HPCL", "014", "Power", 5000000)
+prod15 = Product("IOCL", "015", "Power", 5000000)
+c1 = Category("vehicle", 1, "", [prod1, prod2, prod3])
+c2 = Category("car", 2, c1, [prod4, prod5, prod6])
+c3 = Category("Kia", 3, c2, [prod7, prod8, prod9])
+c4 = Category("Petrol", 4, c3, [prod10, prod11, prod12])
+c5 = Category("Power", 5, c4, [prod13, prod14, prod15])
 cate = [c1, c2, c3, c4, c5]
+products = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15]
 print(c1.display_name)
 print(c2.display_name)
 print(c3.display_name)
 print(c4.display_name)
 print(c5.display_name)
-products = [
-    Product("2wheel", "001", c1, 100000),
-    Product("4wheel", "002", c1, 1000000),
-    Product("Truck", "003", c1, 5000000),
-    Product("Kia", "004", c2, 5000000),
-    Product("Hyundai", "005", c2, 5000000),
-    Product("Innova", "006", c2, 5000000),
-    Product("seltos", "007", c3, 5000000),
-    Product("sonet", "008", c3, 5000000),
-    Product("syros", "009", c3, 5000000),
-    Product("Class A", "010", c4, 5000000),
-    Product("Class B", "011", c4, 5000000),
-    Product("Class C", "012", c4, 5000000),
-    Product("BPCL", "013", c5, 5000000),
-    Product("HPCL", "014", c5, 5000000),
-    Product("IOCL", "015", c5, 5000000)
-]
 cate[0].print_category(cate, products)
-
