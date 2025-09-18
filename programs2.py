@@ -14,7 +14,6 @@ class Category:
         self.display_name = self._get_display_name()
 
     def _get_display_name(self, child_name=''):
-        # if self.parent and child_name != '':
         if self.parent:
             if self.parent.parent:
                 self.child_name = self.parent.name
@@ -63,3 +62,4 @@ products = [
     Product("IOCL", "015", c5, 5000000)
 ]
 cate[0].print_category(cate, products)
+
