@@ -24,6 +24,13 @@ class Category:
         else:
             return self.name
 
+    def print_parent(self):
+        print(c1.display_name)
+        print(c2.display_name)
+        print(c3.display_name)
+        print(c4.display_name)
+        print(c5.display_name)
+
     def print_category(self, cat, product):
         print("--------------------------------------------------------------------------")
         for i in cat:
@@ -55,9 +62,10 @@ c4 = Category("Petrol", 4, c3, [prod10, prod11, prod12])
 c5 = Category("Power", 5, c4, [prod13, prod14, prod15])
 cate = [c1, c2, c3, c4, c5]
 products = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15]
-print(c1.display_name)
-print(c2.display_name)
-print(c3.display_name)
-print(c4.display_name)
-print(c5.display_name)
+# print(c1.display_name)
+# print(c2.display_name)
+# print(c3.display_name)
+# print(c4.display_name)
+# print(c5.display_name)
+cate[0].print_parent()
 cate[0].print_category(cate, products)
